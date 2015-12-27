@@ -3,8 +3,12 @@
 	screen manager.
 """
 from kivy.app import App
-from kivy.ux.floatinglayout import FloatingLayout
+from kivy.uix.floatinglayout import FloatingLayout
+from kivy.uix.screenmanager import Screen
 
 class MainApp(FloatingLayout):
 	def build(self):
-		return 
+		pass
+
+if __name__ == '__main__':
+	MainApp().run()
