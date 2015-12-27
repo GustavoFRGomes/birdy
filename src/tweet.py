@@ -44,3 +44,14 @@ class Tweets():
 			method will return a limited result set, by default only 100 tweets.
 		"""
 		return self.twitter.search.tweets(q=keywords, count=limit)
+
+class Analysis():
+	def __init__(self):
+		pass
+
+	def analyze(self, text, algo=''):
+		"""
+			Method that will handle all of the sentiment analysis using a
+			developer specified algorithm, defaulted to an empty string.
+		"""
+		pass
