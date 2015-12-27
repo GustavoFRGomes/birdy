@@ -13,7 +13,9 @@ class MenuScreen(Screen):
 
 class MainApp(FloatingLayout):
 	def build(self):
-		pass
+		# Add a ScreenManager in the main app to handle all of the transitions
+		# as well as all of the screens.
+		self.manager = ScreenManager(transition=SlideTransition(duration=.10))
 
 if __name__ == '__main__':
 	MainApp().run()
