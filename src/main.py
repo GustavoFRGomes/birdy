@@ -6,6 +6,11 @@ from kivy.app import App
 from kivy.uix.floatinglayout import FloatingLayout
 from kivy.uix.screenmanager import Screen
 
+from kivy.properties import BooleanProperty
+
+class MenuScreen(Screen):
+	fullscreen = BooleanProperty(False)
+
 class MainApp(FloatingLayout):
 	def build(self):
 		pass
