@@ -1,11 +1,11 @@
-import argparse
+"""
+	This will be the main script to build the GUI and it will also have the
+	screen manager.
+"""
+from kivy.app import App
+from kivy.ux.floatinglayout import FloatingLayout
 
-def main():
-    """
-        Main function for the execution of the main CLI project for the birdy
-        project.
-    """
-    pass
-
-if __name__ == '__main__':
-    main()
+class MainApp(FloatingLayout):
+	def build(self):
+		return 
+>>>>>>> 502d3a4d4baa076538531aebf0b7b00b0da41c63
