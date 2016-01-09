@@ -1,6 +1,5 @@
-from . import twitter
-from . import json
-
+import twitter
+import json
 
 class Tweets():
 	def __init__(self, creds_file):

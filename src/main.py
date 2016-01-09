@@ -3,9 +3,19 @@
 	screen manager.
 """
 from kivy.app import App
-from kivy.ux.floatinglayout import FloatingLayout
+from kivy.uix.floatinglayout import FloatingLayout
+from kivy.uix.screenmanager import Screen
+
+from kivy.properties import BooleanProperty
+
+class MenuScreen(Screen):
+	fullscreen = BooleanProperty(False)
 
 class MainApp(FloatingLayout):
 	def build(self):
-		return 
->>>>>>> 502d3a4d4baa076538531aebf0b7b00b0da41c63
+		# Add a ScreenManager in the main app to handle all of the transitions
+		# as well as all of the screens.
+		self.manager = ScreenManager(transition=SlideTransition(duration=.10))
+
+if __name__ == '__main__':
+	MainApp().run()
