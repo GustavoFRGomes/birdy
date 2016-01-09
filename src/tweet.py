@@ -46,13 +46,37 @@ class Tweets():
         """
         return self.twitter.search.tweets(q=keywords, count=limit)
 
+    def parseTweet(self, result):
+        """
+            Method that parses one single tweet at a time and gives out just
+            the information that is important, for example:
+                - name
+                - handle (id)
+                - number of followers
+                - content
+                - timestamp
+                - language
+        """
+        dic = dict(results['statuses'][0])
+
+        final = {}
+        final['name'] = dic['name']
+        final['id'] = dic['screen_name']
+        final['followers'] = dic['followers_count']
+        final['content'] = dic['text']
+        final['timestamp'] = dic['created_at']
+        final['language'] = dic['metadata']['iso_language_code']
+
+        # this is only for one of the tweets.
+        return final
+
     def parseSearch(self, results):
         """
             Method that will parse the results from the search method, because
             there is quite a lot of information that isn't interesting for the
             purposes of this porject.
         """
-
+        pass
 
 class Analysis():
     def __init__(self):
