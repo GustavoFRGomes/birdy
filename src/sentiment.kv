@@ -1,0 +1,115 @@
+SentimentalLayout:
+
+<SentimentalLayout@BoxLayout>:
+	orientation: 'horizontal'
+	padding: '20dp'
+
+	TextLayout:
+		orientation: 'vertical'
+		size_hint_x: 0.7
+
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: 0.8
+			padding: '15dp'
+			Button:
+				text: '<'
+				size_hint_x: 0.1
+
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				padding: '20dp'
+				spacing: '15dp'
+				canvas:
+					Color:
+						rgba: 1, 1, 1, 1
+					Rectangle:
+						pos: self.pos
+						size: self.size
+				Label:
+					# text: root.tweetText()
+					text:'Name and Handle'
+					color: 0.0, 0.5, 1.0, 1.0
+					size_hint_y: 0.1
+					halign: 'left'
+					valign: 'middle'
+					text_size: self.size
+				Label:
+					text: 'Content'
+					color: 0, 0, 0, 1
+					size_hint_y: 0.8
+					halign: 'left'
+					valign: 'middle'
+					text_size: self.size
+				Label:
+					halign: 'right'
+					valign: 'middle'
+					text_size: self.size
+					text: 'Timestamp'
+					color: 0,0,0,0.8
+					size_hint_y: 0.1
+
+			Button:
+				text: '>'
+				size_hint_x: 0.1
+
+		BoxLayout:
+			size_hint_y: 0.2
+			orientation: 'horizontal'
+			spacing: '20dp'
+			padding: '15dp'
+
+			Button:
+				# Button to get more tweets from a search screen
+				text: 'New Query'
+				on_press: root.analyzeTweet()
+			Button:
+				# Button to import from an InputText
+				text: 'Import Text'
+
+			Button:
+				# Button to go to the Summarization screen.
+				text: 'Summarize'
+
+	ResultsLayout:
+		# make another boxlayout to get some padding going on.
+		orientation: 'vertical'
+		size_hint_x: 0.3
+		padding: '20dp'
+		canvas:
+			Color:
+				rgba: 0.1, 0.1, 0.1, 1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+
+		BoxLayout:
+			orientation: 'vertical'
+			size_hint_y: 0.6
+
+			Label:
+				text: 'funny'
+				size_hint_y: 0.1
+
+			Label:
+				text: 'happy'
+				size_hint_y: 0.1
+
+			Label:
+				text: 'angry'
+				size_hint_y: 0.1
+
+			Label:
+				size_hint_y: 0.1
+				text: 'sad'
+
+			Label:
+				size_hint_y: 0.6
+				text: ''
+		BoxLayout:
+			orientation: 'vertical'
+			size_hint_y: 0.4
+
+			Label:
+				text: 'This is the emotion'
