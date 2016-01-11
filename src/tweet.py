@@ -38,7 +38,7 @@ class Tweets():
         """
         return self.twitter.trends.place(woe)
 
-    def search(self, keywords, limit=100):
+    def search(self, keywords, limit=1):
         """
             Method that will search for a specific number of tweets containing a
             few words within keywords, it can be a sigle word or a phrase. This

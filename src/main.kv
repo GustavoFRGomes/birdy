@@ -2,6 +2,7 @@
 
 ScreenManager:
 	id: screen_manager
+	fullscreen: True
 
 	TweetScreen:
 		id: tweet_screen
@@ -22,3 +23,238 @@ ScreenManager:
 		id: sum_screen
 		name: 'SumScreen'
 		manager: screen_manager
+
+<SumScreen>:
+# Screen for the summarization of text
+	BoxLayout:
+		orientation: 'vertical'
+		spacing: '15dp'
+		padding: '15dp'
+
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: 0.9
+			padding: '20dp'
+			spacing: '15dp'
+
+			TextInput:
+			# text to be summarized goes here
+				multiline: True
+				id: sum_text
+				hint_text: 'Paste or write the text to summarize here...'
+				font_size: 20
+			TextInput:
+			# text after summarization
+				canvas.before:
+					Color:
+						rgb: 0.6, 0.6, 0.6
+					Rectangle:
+						pos: self.pos
+						size: self.size
+
+				id: summed_text
+				color: 0.25, 0.25, 0.25, 1.0
+				hint_text: 'TESTE'
+				valign: 'middle'
+				halign: 'left'
+				font_size: 20
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: 0.1
+			spacing: '20dp'
+			padding: '10dp'
+
+			Label:
+				text: ''
+				size_hint_x: 0.65
+
+			Button:
+			# this is the button to summarize text
+				on_release: root.summarize()
+				text: 'Summarize'
+				size_hint_x: 0.175
+
+			Button:
+				text: 'Cancel'
+				size_hint_x: 0.175
+				on_release: app.root.current = 'TweetScreen'
+
+<ImportScreen>:
+# Screen to import text from the TextInput
+	BoxLayout:
+		orientation: 'vertical'
+		padding: '30dp'
+
+		TextInput:
+			miltiline: True
+			id: import_text
+			size_hint_y: 0.9
+			padding: '10dp'
+
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: 0.1
+			spacing: '30dp'
+			padding: '10dp'
+
+			Button:
+				text: 'Import'
+				on_release: app.root.current = 'TweetScreen'
+
+			Button:
+				text: 'Cancel'
+				on_release: app.root.current = 'TweetScreen'
+
+<TweetScreen>:
+	BoxLayout:
+		orientation: 'horizontal'
+		padding: '30dp'
+
+		BoxLayout:
+			# Left part of the layout.
+			orientation: 'vertical'
+			size_hint_x: 0.7
+
+			BoxLayout:
+				orientation: 'horizontal'
+				size_hint_y: 0.8
+				padding: '15dp'
+
+				Button:
+					text: '<'
+					size_hint_x: 0.1
+					# on_press: app.printf()
+
+				BoxLayout:
+					size_hint_x: 0.8
+					orientation: 'vertical'
+					padding: '20dp'
+					spacing: '15dp'
+					canvas.before:
+						Color:
+							rgb: 1, 1, 1
+						Rectangle:
+							pos: self.pos
+							size: self.size
+
+					Label:
+						text: 'Name and Handle'
+						color: 0.0, 0.5, 1.0, 1.0
+						size_hint_y: 0.1
+						halign: 'left'
+						valign: 'middle'
+						text_size: self.size
+
+					Label:
+						text: 'Contents'
+						color: 0.0, 0.0, 0.0, 1.0
+						size_hint_y: 0.8
+						halign: 'left'
+						valign: 'middle'
+						text_size: self.size
+
+					Label:
+						text: 'Timestamp'
+						color: 0.0, 0.0, 0.0, 0.7
+						size_hint_y: 0.1
+						halign: 'right'
+						valign: 'middle'
+
+				Button:
+					text: '>'
+					size_hint_x: 0.1
+
+			BoxLayout:
+				orientation: 'horizontal'
+				padding: '20dp'
+				spacing: '15dp'
+				size_hint_y: 0.2
+
+				Button:
+					text: 'New Query'
+					on_release: app.root.current = 'SearchScreen'
+
+				Button:
+					text: 'Import Text'
+					on_release: app.root.current = 'ImportScreen'
+
+				Button:
+					text: 'Summarize'
+					on_release: app.root.current = 'SumScreen'
+
+		BoxLayout:
+			# make another boxlayout to get some padding going on.
+			orientation: 'vertical'
+			size_hint_x: 0.3
+			padding: '30dp'
+			canvas:
+				Color:
+					rgba: 0.1, 0.1, 0.1, 1
+				Rectangle:
+					pos: self.pos
+					size: self.size
+
+			BoxLayout:
+				orientation: 'vertical'
+				size_hint_y: 0.6
+
+				Label:
+					text: 'funny : '+str(app.funny)
+					size_hint_y: 0.1
+
+				Label:
+					text: 'happy : '+str(app.happy)
+					size_hint_y: 0.1
+
+				Label:
+					text: 'angry : '+str(app.angry)
+					size_hint_y: 0.1
+
+				Label:
+					size_hint_y: 0.1
+					text: 'sad : '+str(app.sad)
+
+				Label:
+					size_hint_y: 0.6
+					text: ''
+			BoxLayout:
+				orientation: 'vertical'
+				size_hint_y: 0.4
+
+				Image:
+					source: app.emotion()
+
+				Label:
+					size_hint_y: 0.2
+					text: 'This is the emotion!'
+
+<SearchScreen>:
+# This will be a screen to put all of the text and submit it to Analysis
+	BoxLayout:
+		orientation: 'vertical'
+
+		BoxLayout:
+			orientation:'horizontal'
+			size_hint_y: 0.1
+			spacing: '10dp'
+			padding: '20dp'
+
+			TextInput:
+				multiline: False
+				id: search_results
+				size_hint_x: 0.7
+				font_size: 25
+				hint_text: 'Search for a phrase here...'
+			Button:
+				text: 'Search'
+				size_hint_x: 0.15
+				on_press: app.importText(search_results)
+				on_release: app.root.current = 'TweetScreen'
+			Button:
+				text: 'Cancel'
+				size_hint_x: 0.15
+				on_release: app.root.current = 'TweetScreen'
+
+		BoxLayout:
+			size_hint_y: 0.9
+
