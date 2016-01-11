@@ -71,9 +71,9 @@ class MainApp(App):
     angry = 0.0
     happy = 0.0
     search_results = StringProperty('')
-    time = '12 of January of 2016'
-    name = '@GRFGAFSDFSDFS'
-    content = 'asfsdfsdjfsdhfksdhfsdjfhsadkfsdhfjadsda'
+    time = ''
+    name = ''
+    content = 'The content goes here, you should try a new query...'
 
     def build(self):
         # Add a ScreenManager in the main app to handle all of the transitions
@@ -101,7 +101,7 @@ class MainApp(App):
             Helper method for the simulation of the sentiment analysis.
         """
         return float(random.randrange(start, stop)/100)
-    
+
     def list_tweets(self):
         """
             Method that will handle the creation of a list.
