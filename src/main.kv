@@ -139,24 +139,25 @@ ScreenManager:
 							size: self.size
 
 					Label:
-						text: 'Name and Handle'
+						text: app.name
 						color: 0.0, 0.5, 1.0, 1.0
 						size_hint_y: 0.1
 						halign: 'left'
 						valign: 'middle'
-						text_size: self.size
+						font_size: 20
 
 					Label:
-						text: 'Contents'
+						text: app.content
 						color: 0.0, 0.0, 0.0, 1.0
 						size_hint_y: 0.8
 						halign: 'left'
 						valign: 'middle'
-						text_size: self.size
+						font_size: 20
 
 					Label:
-						text: 'Timestamp'
+						text: app.time
 						color: 0.0, 0.0, 0.0, 0.7
+						font_size: 20
 						size_hint_y: 0.1
 						halign: 'right'
 						valign: 'middle'

@@ -71,6 +71,9 @@ class MainApp(App):
     angry = 0.0
     happy = 0.0
     search_results = StringProperty('')
+    time = '12 of January of 2016'
+    name = '@GRFGAFSDFSDFS'
+    content = 'asfsdfsdjfsdhfksdhfsdjfhsadkfsdhfjadsda'
 
     def build(self):
         # Add a ScreenManager in the main app to handle all of the transitions
@@ -98,6 +101,20 @@ class MainApp(App):
             Helper method for the simulation of the sentiment analysis.
         """
         return float(random.randrange(start, stop)/100)
+    
+    def list_tweets(self):
+        """
+            Method that will handle the creation of a list.
+        """
+        pass
+
+    def printTweet(self, text):
+        """
+            Method that will print all of the text from the text disctionary.
+        """
+        self.content = text['content']
+        self.name = text['name']
+        self.time = text['timestamp']
 
     def analyzeEmotion(self, text):
         """
