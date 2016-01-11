@@ -156,17 +156,12 @@ class MainApp(App):
             Method that will for now simulate the analysis of the emotion
             that is present on the text to be analyzed.
         """
-        happy = randomize()
-        sad = randomize()
-        angry = randomize()
-        funny = randomize()
+        self.happy = randomize()
+        self.sad = randomize()
+        self.angry = randomize()
+        self.funny = randomize()
 
-        self.happy = happy
-        self.sad = sad
-        self.angry = angry
-        self.funny = funny
-
-    def emotion(self):
+   def emotion(self):
         happy = self.happy
         funny = self.funny
         angry = self.angry
