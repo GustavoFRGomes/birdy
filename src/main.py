@@ -116,6 +116,41 @@ class MainApp(App):
         self.name = text['name']
         self.time = text['timestamp']
 
+    def nextPost(self):
+        """
+            Method that will handle the click to the next post of the list,
+            basically the tweets or paragraphs will be moved from left to right
+            and this will be the method to go to the next one on the list.
+        """
+        if self.current == self.list_posts[-1]:
+            # this is the end of the line just don't do anything
+            pass
+
+        #search for the next tweet
+        size = len(self.list_posts)
+        for i in range(size):
+            if self.list_posts[i] == self.current:
+                size = i
+                break
+
+        self.current = self.list_post[size+1]
+
+    def prevPost(self):
+        """
+            Method that will handle the move to the previous post.
+        """
+        if self.current == self.list_posts[0]:
+            # it's still in the first element
+            pass
+
+        size = len(self.list_posts)
+        for i in range(size):
+            if self.list_posts[i] == self.current:
+                size = i
+                break
+
+        self.current = self.list_post[size-1]
+
     def analyzeEmotion(self, text):
         """
             Method that will for now simulate the analysis of the emotion
