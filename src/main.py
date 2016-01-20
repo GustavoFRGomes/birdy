@@ -71,8 +71,8 @@ class MainApp(App):
     angry = 0.0
     happy = 0.0
     search_results = StringProperty('')
-    time = ''
-    name = ''
+    time = '11th of January'
+    name = '@GustavoFRGomes - Gugas'
     content = 'The content goes here, you should try a new query...'
 
     def build(self):
@@ -161,25 +161,25 @@ class MainApp(App):
         self.angry = randomize()
         self.funny = randomize()
 
-   def emotion(self):
+    def emotion(self):
         happy = self.happy
         funny = self.funny
         angry = self.angry
         sad = self.sad
 
-        if happy > sad and happy > angry and happy > funny:
-            return '../res/happy.png'
+        if angry > sad and angry > happy and angry > funny:
+            return '../res/anngryy.png'
         elif sad > happy and sad > angry and sad > funny:
             return '../res/sad_crying.png'
         elif funny > happy and funny > angry and funny > sad:
             return '../res/laughing.png'
-        return '../res/angry.png'
+        return '../res/happy.png'
 
     def importText(self, text):
         """
             Method that will Import the text to be analyzed.
         """
-        print('It was clicked!'  + str(text.text))
+        print('It was clicked!\n'  + str(text.text))
         pass
 
 if __name__ == '__main__':
